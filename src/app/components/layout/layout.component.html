@@ -1,0 +1,77 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <h1>Sistema Venta</h1>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <span style="flex: 1 1 auto"></span>
+    <label style="font-size: 14px; margin-right: 20px"
+      >{{ correoUsuario }} | {{ rolUsuario }}</label
+    >
+
+    <button mat-icon-button (click)="cerrarSesion()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav opened="true" mode="side" style="width: 250px">
+    <mat-nav-list>
+      <mat-list-item *ngFor="let menu of listaMenus" [routerLink]="menu.url">
+        <mat-icon matListItemIcon [ngStyle]="{ color: 'black' }">{{
+          menu.icono
+        }}</mat-icon>
+        <div matListItemTitle>{{ menu.nombre }}</div>
+      </mat-list-item>
+      <!-- <mat-list-item routerLink="/pages/dashboard">
+        <mat-icon matListItemIcon [ngStyle]="{ color: 'black' }"
+          >dashboard</mat-icon
+        >
+        <div matListItemTitle>DashBoard</div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/pages/usuarios">
+        <mat-icon matListItemIcon [ngStyle]="{ color: 'black' }"
+          >group</mat-icon
+        >
+        <div matListItemTitle>Usuarios</div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/pages/productos">
+        <mat-icon matListItemIcon [ngStyle]="{ color: 'black' }"
+          >collections_bookmark</mat-icon
+        >
+        <div matListItemTitle>Productos</div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/pages/venta">
+        <mat-icon matListItemIcon [ngStyle]="{ color: 'black' }"
+          >currency_exchange</mat-icon
+        >
+        <div matListItemTitle>Venta</div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/pages/historial_venta">
+        <mat-icon matListItemIcon [ngStyle]="{ color: 'black' }"
+          >edit_note</mat-icon
+        >
+        <div matListItemTitle>Historial Ventas</div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/pages/reportes">
+        <mat-icon matListItemIcon [ngStyle]="{ color: 'black' }"
+          >receipt</mat-icon
+        >
+        <div matListItemTitle>Reportes</div>
+      </mat-list-item> -->
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div style="height: 90vh">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
